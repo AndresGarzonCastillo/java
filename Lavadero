@@ -1,0 +1,206 @@
+import java.util.Scanner;
+
+public class Lavadero {
+    public static Scanner in = new Scanner(System.in);
+    public static int lavado;
+    public static int opcion;
+    public static int combo;
+    public static double combo1;
+    public static double combo2;
+    public static double combo3;
+    public static double combo4;
+    public static double combo5;
+    public static double combo6;
+    public static double terna1;
+    public static double terna2;
+    public static double terna3;
+    public static double cuatro;
+    public static int servicio;
+    public static int terna;
+    public static double tiempocombo1;
+    public static double tiempocombo2;
+    public static double tiempocombo3;
+    public static double tiempocombo4;
+    public static double tiempocombo5;
+    public static double tiempocombo6;
+    public static double tiempoterna1;
+    public static double tiempoterna2;
+    public static double tiempoterna3;
+    public static double tiempocuatro;
+
+    public static void menu() {
+        System.out.println("Ingresa un numero segun lo que desea\n"
+                + "1. Un solo servicio\n2. Servicio en combo\n3. No tomar servicios");
+        lavado = in.nextInt();
+        in.nextLine();
+    }
+
+    public static void menu2() {
+        System.out.println("Ingresa el numero del tipo de lavado que desea realizar\n"
+                + "1. Lavado sencillo\n2. Polichada sencilla\n3. Lavado de motor\n"
+                + "4. Lavado de tapiceria\n5. Regresar al menu anterior");
+        opcion = in.nextInt();
+        in.nextLine();
+    }
+
+    public static void menu3() {
+        System.out.println("¿Cuantos servicios de lavado desea realizar\n2\n3\n4\n1. Regresar al menu");
+        combo = in.nextInt();
+        in.nextLine();
+    }
+
+    public static void menu4() {
+        System.out.println("Combos\n"
+                + "1. Lavado sencillo y Polichada sencilla\n"
+                + "2. Lavado sencillo y Lavado de motor\n"
+                + "3. Lavado sencillo y Lavado de tapiceria\n"
+                + "4. Polichada sencilla y Lavado de motor\n"
+                + "5. Polichada sencilla y Lavado de tapiceria\n"
+                + "6. Lavado de motor y Lavado de tapiceria\n"
+                + "7. Regresar al menu anterior");
+        servicio = in.nextInt();
+        in.nextLine();
+    }
+
+    public static void menu5() {
+        System.out.println("Ternas\n"
+                + "1. Lavado sencillo, Polichada sencilla y Lavado de motor\n"
+                + "2. Lavado sencillo, Polichada sencilla y Lavado de tapiceria\n"
+                + "3. Polichada sencilla, Lavado de motor y Lavado de tapiceria\n"
+                + "4. Regresar al menu anterior");
+        terna = in.nextInt();
+        in.nextLine();
+    }
+
+    public static void costo() {
+        combo1 = (25000 + 75000) * (0.9);
+        combo2 = (25000 + 70000) * (0.9);
+        combo3 = (25000 + 50000) * (0.9);
+        combo4 = (75000 + 70000) * (0.9);
+        combo5 = (75000 + 50000) * (0.9);
+        combo6 = (70000 + 50000) * (0.9);
+        terna1 = (25000 + 75000 + 70000) * (0.85);
+        terna2 = (25000 + 75000 + 50000) * (0.85);
+        terna3 = (75000 + 70000 + 50000) * (0.85);
+        cuatro = (25000 + 75000 + 70000 + 50000) * (0.80);
+    }
+
+    public static void tiempo() {
+        tiempocombo1 = (30 + 60 - 10);
+        tiempocombo2 = (30 + 30 - 10);
+        tiempocombo3 = (30 + 45 - 10);
+        tiempocombo4 = (60 + 30 - 10);
+        tiempocombo5 = (60 + 45 - 10);
+        tiempocombo6 = (30 + 45 - 10);
+        tiempoterna1 = (30 + 60 + 30 - 25);
+        tiempoterna2 = (30 + 60 + 45 - 25);
+        tiempoterna3 = (60 + 30 + 45 - 25);
+        tiempocuatro = (30 + 60 + 30 + 45 - 30);
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String args[]) {
+        do {
+            menu();
+            switch (lavado) {
+                case 1:
+                    do {
+                        menu2();
+                        switch (opcion) {
+                            case 1:
+                                System.out.println("El valor del servicio cuesta $25000, "
+                                        + "y se entrega en 30 minutos aproximadamente");
+                                break;
+                            case 2:
+                                System.out.println("El valor del servicio cuesta $75000, "
+                                        + "y se entrega en 60 minutos aproximadamente");
+                                break;
+                            case 3:
+                                System.out.println("El valor del servicio cuesta $70000, "
+                                        + "y se entrega en 30 minutos aproximadamente");
+                                break;
+                            case 4:
+                                System.out.println("El valor del servicio cuesta $25000, "
+                                        + "y se entrega en 45 minutos aproximadamente");
+                                break;
+                            case 5:
+                                System.out.println("Menu");
+                                break;
+                            default:
+                                System.out.println("No se ha elegido una opcion valida");
+                                break;
+                        }
+                    } while (opcion != 5);
+                    break;
+                case 2:
+                    do {
+                        menu3();
+                        switch (combo) {
+                            case 1:
+                                System.out.println("Menu");
+                                break;
+                            case 2:
+                                System.out.println("Elige el numero de los dos servicios que deseas");
+                                menu4();
+                                costo();
+                                tiempo();
+                                if (servicio == 1) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo1
+                                            + " y se entrega en " + tiempocombo1 + " minutos aproximadamente");
+                                } else if (servicio == 2) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo2
+                                            + " y se entrega en " + tiempocombo2 + " minutos aproximadamente");
+                                } else if (servicio == 3) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo3
+                                            + " y se entrega en " + tiempocombo3 + " minutos aproximadamente");
+                                } else if (servicio == 4) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo4
+                                            + " y se entrega en " + tiempocombo4 + " minutos aproximadamente");
+                                } else if (servicio == 5) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo5
+                                            + " y se entrega en " + tiempocombo5 + " minutos aproximadamente");
+                                } else if (servicio == 6) {
+                                    System.out.println("El valor de los servicios cuestan $" + combo6
+                                            + " y se entrega en " + tiempocombo6 + " minutos aproximadamente");
+                                } else {
+                                    System.out.println("Menu");
+                                }
+                                break;
+                            case 3:
+                                System.out.println("Elige los tres servicios que deseas");
+                                menu5();
+                                if (terna == 1) {
+                                    System.out.println("El valor de los servicios cuestan $" + terna1
+                                            + " y se entrega en " + tiempoterna1 + " minutos aproximadamente");
+                                } else if (terna == 2) {
+                                    System.out.println("El valor de los servicios cuestan $" + terna2
+                                            + " y se entrega en " + tiempoterna2 + " minutos aproximadamente");
+                                } else if (terna == 3) {
+                                    System.out.println("El valor de los servicios cuestan $" + terna3
+                                            + " y se entrega en " + tiempoterna3 + " minutos aproximadamente");
+                                } else {
+                                    System.out.println("Menu");
+                                }
+                                break;
+                            case 4:
+                                System.out.println("El valor de los servicios cuestan $" + cuatro
+                                        + " y se entrega en " + tiempocuatro + "  minutos aproximadamente");
+                                break;
+                            default:
+                                System.out.println("No se ha elegido una opcion valida");
+                                break;
+                        }
+                    } while (combo != 1);
+                    break;
+                case 3:
+                    System.out.println("No has tomado ningun servicio, hasta pronto");
+                    break;
+                default:
+                    System.out.println("No se ha elegido una opcion valida");
+                    break;
+            }
+        } while (lavado != 3);
+    }
+}
